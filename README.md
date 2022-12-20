@@ -53,15 +53,15 @@
 
 ## shippings テーブル
 
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ----------------------------- |
-| postal_code  | integer    | null: false                   |
-| prefecture   | text       | null: false                   |
-| city         | text       | null: false                   |
-| addresses    | text       | null: false                   |
-| building     | text       |                               |
-| phone-number | string     | null: false                   |
-| purchase     | references | null: false,foreign_key: true |
+| Column              | Type       | Options                       |
+| ------------------- | ---------- | ----------------------------- |
+| postal_code         | string     | null: false                   |
+| region_of_origin_id | integer    | null: false                   |
+| city                | string     | null: false                   |
+| addresses           | string     | null: false                   |
+| building            | string     |                               |
+| phone-number        | string     | null: false                   |
+| purchase            | references | null: false,foreign_key: true |
 
 ### Association
 
