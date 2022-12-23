@@ -12,8 +12,7 @@ class User < ApplicationRecord
   end
   validates :nickname, presence: true
   validates :birth_date, presence: true
-  with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i } do
-    validates :password
-  end
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX
   
 end
