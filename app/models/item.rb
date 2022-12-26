@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :user, :category, :commodity_condition, :shipping_charge, :region_of_origin, :days_to_ship
+   belongs_to_active_hash :category, :commodity_condition, :shipping_charge, :region_of_origin, :days_to_ship
   has_one_attached :image
-  
+  belongs_to :user
   with_options presence: true, format: { with: /\A[0-9]+\z/ } do
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
