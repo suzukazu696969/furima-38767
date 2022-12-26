@@ -7,13 +7,13 @@ class Item < ApplicationRecord
    belongs_to_active_hash :days_to_ship 
   has_one_attached :image
   belongs_to :user
-  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  end
+  
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+ 
   validates :title, presence: true
   validates :image, presence: true
   validates :delivery, presence: true
-  validates :user, presence: true
+  
   validates :commodity_condition_id, numericality: { other_than: 1 } 
   validates :shipping_charge_id, numericality: { other_than: 1 } 
   validates :region_of_origin_id, numericality: { other_than: 1 }
