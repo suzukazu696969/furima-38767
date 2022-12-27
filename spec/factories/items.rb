@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
-    title               {'テレビ'}
-    price               {'600'}
-    delivery               {'商品説明'}
+    title               { 'テレビ' }
+    price               { '600' }
+    delivery { '商品説明' }
     association :user
     commodity_condition_id { 2 }
     shipping_charge_id { 2 }
