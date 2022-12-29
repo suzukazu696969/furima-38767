@@ -7,8 +7,10 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    @items = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new(item_params)
-    if  @purchase_shipping.save
+    if @purchase_shipping.valid?
+      @purchase_shipping.save
       redirect_to root_path
     else
       render :index
