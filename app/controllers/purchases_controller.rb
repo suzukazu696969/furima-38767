@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :edit]
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:edit, :index]
+
   def index
     @purchase_shipping = PurchaseShipping.new
   end
@@ -42,6 +43,6 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if current_user == @items.user && !@items.purchase.nil?
+    redirect_to root_path if current_user == @items.user || !@items.purchase.nil?
   end
 end
