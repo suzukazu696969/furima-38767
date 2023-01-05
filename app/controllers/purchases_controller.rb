@@ -1,13 +1,13 @@
 class PurchasesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:index, :create, :edit] 
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:edit, :index] 
   def index
     @purchase_shipping = PurchaseShipping.new
-    @items = Item.find(params[:item_id])
 
   end
 
   def create
-    @items = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new(item_params)
     if @purchase_shipping.valid?
       pay_item
@@ -16,6 +16,9 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def edit
   end
 
   private
@@ -32,4 +35,16 @@ class PurchasesController < ApplicationController
         currency: 'jpy'                 
       )
   end
+
+  def set_item
+    @items = Item.find(params[:item_id])
+  end
+
+  def move_to_index 
+    redirect_to root_path unless @items.purchase == nil
+    redirect_to root_path if current_user == @items.user
+  end
+
+
+
 end

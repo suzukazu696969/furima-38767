@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_edit
-    redirect_to root_path unless current_user == @item.user
+    redirect_to root_path unless current_user == @item.user && @item.purchase == nil
+    # redirect_to root_path if @item.purchase != nil
   end
 end
