@@ -42,7 +42,6 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path unless @items.purchase.nil?
-    redirect_to root_path if current_user == @items.user
+    redirect_to root_path if current_user == @items.user && !@items.purchase.nil?
   end
 end
