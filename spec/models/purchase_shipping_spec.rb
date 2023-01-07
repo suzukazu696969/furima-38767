@@ -2,11 +2,19 @@ require 'rails_helper'
 
 RSpec.describe PurchaseShipping, type: :model do
   before do
-    @purchase_shipping = FactoryBot.build(:purchase_shipping)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @purchase_shipping = FactoryBot.build(:purchase_shipping, user_id: @user, item_id: @item)
+    sleep 0.1
   end
 
   context '内容に問題ない場合' do
     it '全ての記入が出来ていれば購入できる' do
+      expect(@purchase_shipping).to be_valid
+    end
+
+    it '建物が記入されていなくても登録できる' do
+      @purchase_shipping.building = nil
       expect(@purchase_shipping).to be_valid
     end
   end
@@ -40,6 +48,18 @@ RSpec.describe PurchaseShipping, type: :model do
       @purchase_shipping.phone_number = nil
       @purchase_shipping.valid?
       expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
+    end
+
+    it 'user_idが空では購入できないこと' do
+      @purchase_shipping.user_id = nil
+      @purchase_shipping.valid?
+      expect(@purchase_shipping.errors.full_messages).to include("User can't be blank")
+    end
+
+    it 'item_idが空では購入できないこと' do
+      @purchase_shipping.item_id = nil
+      @purchase_shipping.valid?
+      expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
     end
 
     it 'region_of_originを選択していない場合購入できない' do

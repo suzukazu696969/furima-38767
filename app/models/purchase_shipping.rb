@@ -3,6 +3,8 @@ class PurchaseShipping
   attr_accessor :postal_code, :item_id, :user_id, :region_of_origin_id, :city, :addresses, :building, :phone_number, :token
 
   with_options presence: true do
+    validates :user_id
+    validates :item_id
     validates :region_of_origin_id, numericality: { other_than: 1 }
     validates :addresses
     validates :city

@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :edit]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :move_to_index, only: [:edit, :index]
+  before_action :move_to_index, only: [:index]
 
   def index
     @purchase_shipping = PurchaseShipping.new
@@ -18,8 +18,7 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  
 
   private
 
