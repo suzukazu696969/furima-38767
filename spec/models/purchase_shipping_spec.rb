@@ -103,7 +103,7 @@ RSpec.describe PurchaseShipping, type: :model do
       expect(@purchase_shipping.errors.full_messages).to include('Phone number is invalid')
     end
 
-    it 'phone_numberが11桁以上の場合は購入できない' do
+    it 'phone_numberが12桁以上の場合は購入できない' do
       @purchase_shipping.phone_number = '090098776543'
       @purchase_shipping.valid?
       expect(@purchase_shipping.errors.full_messages).to include('Phone number is invalid')
