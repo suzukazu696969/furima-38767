@@ -18,8 +18,6 @@ class PurchasesController < ApplicationController
     end
   end
 
-  
-
   private
 
   def item_params
