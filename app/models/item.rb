@@ -12,12 +12,12 @@ class Item < ApplicationRecord
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   validates :title, presence: true
-  validates :image, presence: true
+  validates :image, presence: true, presence: { message: 'を選択してください' }
   validates :delivery, presence: true
 
-  validates :commodity_condition_id, numericality: { other_than: 1 }
-  validates :shipping_charge_id, numericality: { other_than: 1 }
-  validates :region_of_origin_id, numericality: { other_than: 1 }
-  validates :days_to_ship_id, numericality: { other_than: 1 }
-  validates :category_id, numericality: { other_than: 1 }
+  validates :commodity_condition_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :shipping_charge_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :region_of_origin_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :days_to_ship_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :category_id, numericality: { other_than: 1, message: "を入力してください" }
 end

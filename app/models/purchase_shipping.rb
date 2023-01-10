@@ -5,7 +5,7 @@ class PurchaseShipping
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :region_of_origin_id, numericality: { other_than: 1 }
+    validates :region_of_origin_id, numericality: { other_than: 1, message: "を入力してください" }
     validates :addresses
     validates :city
     validates :token
