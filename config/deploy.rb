@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "3.17.1"
 
-set :application, "furima_38767"
+set :application, "furima-38767"
 set :repo_url,  'git@github.com:suzukazu696969/furima-38767.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
